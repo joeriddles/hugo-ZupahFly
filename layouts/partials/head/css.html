@@ -1,0 +1,6 @@
+{{ $options := dict "inlineImports" true }}
+{{ $styles := resources.Get "css/main.css" | resources.PostCSS $options }}
+{{ if hugo.IsProduction }}
+  {{ $styles = $styles | minify | fingerprint | resources.PostProcess }}
+{{ end }}
+<link href="{{ $styles.RelPermalink }}" type="text/css" rel="stylesheet" />

@@ -1,0 +1,41 @@
+# Default
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'My New Hugo Site'
+
+[[menus.main]]
+name = 'Home'
+pageRef = '/'
+weight = 10
+
+[[menus.main]]
+name = 'Posts'
+pageRef = '/posts'
+weight = 20
+
+[[menus.main]]
+name = 'Tags'
+pageRef = '/tags'
+weight = 30
+
+[module]
+  [module.hugoVersion]
+    extended = false
+    min = "0.116.0"
+
+# See https://github.com/bep/hugo-starter-tailwind-basic
+[build]
+  [build.buildStats]
+    enable = true
+[[build.cachebusters]]
+    source = 'assets/watching/hugo_stats\.json'
+    target = 'styles\.css'
+[[build.cachebusters]]
+    source = '(postcss|tailwind)\.config\.js'
+    target = 'css'
+[[build.cachebusters]]
+    source = 'assets/.*\.(js|ts|jsx|tsx)'
+    target = 'js'
+[[build.cachebusters]]
+    source = 'assets/.*\.(.*)$'
+    target = '$1'
